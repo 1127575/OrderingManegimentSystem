@@ -139,10 +139,13 @@
     <Compile Include="Controllers\EstimateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemMaintenanceController.cs" />
+    <Compile Include="Controllers\OrderingSearchController.cs" />
+    <Compile Include="Controllers\OrderingStatusController.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
     <Compile Include="Controllers\ProductMaintenanceController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductAddController.cs" />
+    <Compile Include="Controllers\StatusUpdateController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,23 +244,25 @@
     <Content Include="Views\ProductMaintenance\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\ItemMaintenance\" />
-    <Folder Include="Views\ProductList\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\CustomerMaster\" />
-    <Folder Include="Views\EmployeeMaster\" />
-    <Folder Include="Views\Estimate\" />
-    <Folder Include="Views\Order\" />
-    <Folder Include="Views\ProductAdd\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Folder Include="Data\" />
     <Folder Include="Views\CustomerAdd\" />
     <Folder Include="Views\CustomerLogin\" />
     <Folder Include="Views\CustomerLogout\" />
+    <Folder Include="Views\CustomerMaster\" />
     <Folder Include="Views\EmployeeLogin\" />
     <Folder Include="Views\EmployeeLogout\" />
+    <Folder Include="Views\EmployeeMaster\" />
+    <Folder Include="Views\Estimate\" />
+    <Folder Include="Views\ItemMaintenance\" />
+    <Folder Include="Views\OrderingSearch\" />
+    <Folder Include="Views\OrderingStatus\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\ProductAdd\" />
+    <Folder Include="Views\ProductList\" />
+    <Folder Include="Views\StatusUpdate\" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
