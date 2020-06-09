@@ -131,7 +131,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CustomerMasterController.cs" />
     <Compile Include="Controllers\EmployeeMasterController.cs" />
+    <Compile Include="Controllers\EstimateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductAddController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +234,9 @@
   <ItemGroup>
     <Folder Include="Views\CustomerMaster\" />
     <Folder Include="Views\EmployeeMaster\" />
+    <Folder Include="Views\Estimate\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\ProductAdd\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
