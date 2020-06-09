@@ -129,6 +129,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomerMasterController.cs" />
+    <Compile Include="Controllers\EmployeeMasterController.cs" />
     <Compile Include="Controllers\EstimateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -230,6 +232,8 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\CustomerMaster\" />
+    <Folder Include="Views\EmployeeMaster\" />
     <Folder Include="Views\Estimate\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Views\ProductAdd\" />
