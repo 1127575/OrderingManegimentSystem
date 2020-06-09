@@ -1,0 +1,23 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <form action="/DeptRegist/Check" method="post">
+        <h2>部門ID　：<input name="deptid"></h2>
+        <h2>部門名　：<input name="deptname"></h2>
+        <h2>部門住所：<input name="deptadress" required /></h2>
+        <h2>内線　　：<input name="deptnumber" required /></h2>
+        <input type="hidden" name="id" value="@ViewBag.Emp_Id">
+        <input type="hidden" name="password" value="@ViewBag.Password">
+        <input type="submit" value="確認画面へ" />
+    </form>
+</body>
+</html>
