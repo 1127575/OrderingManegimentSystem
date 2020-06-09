@@ -129,6 +129,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomerAddController.cs" />
+    <Compile Include="Controllers\CustomerLoginController.cs" />
+    <Compile Include="Controllers\CustomerLogoutController.cs" />
+    <Compile Include="Controllers\EmployeeLoginController.cs" />
+    <Compile Include="Controllers\EmployeeLogoutController.cs" />
     <Compile Include="Controllers\CustomerMasterController.cs" />
     <Compile Include="Controllers\EmployeeMasterController.cs" />
     <Compile Include="Controllers\EstimateController.cs" />
@@ -245,6 +250,13 @@
     <Folder Include="Views\Estimate\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Views\ProductAdd\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\CustomerAdd\" />
+    <Folder Include="Views\CustomerLogin\" />
+    <Folder Include="Views\CustomerLogout\" />
+    <Folder Include="Views\EmployeeLogin\" />
+    <Folder Include="Views\EmployeeLogout\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
