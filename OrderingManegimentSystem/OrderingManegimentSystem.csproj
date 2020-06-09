@@ -129,10 +129,20 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CustomerAddController.cs" />
+    <Compile Include="Controllers\CustomerLoginController.cs" />
+    <Compile Include="Controllers\CustomerLogoutController.cs" />
+    <Compile Include="Controllers\EmployeeLoginController.cs" />
+    <Compile Include="Controllers\EmployeeLogoutController.cs" />
+    <Compile Include="Controllers\CustomerMasterController.cs" />
+    <Compile Include="Controllers\EmployeeMasterController.cs" />
+    <Compile Include="Controllers\EstimateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OrderingSearchController.cs" />
-    <Compile Include="Controllers\OrderingStatusController.cs" />
-    <Compile Include="Controllers\OrderingStatusUpdateController.cs" />
+    <Compile Include="Controllers\ItemMaintenanceController.cs" />
+    <Compile Include="Controllers\ProductListController.cs" />
+    <Compile Include="Controllers\ProductMaintenanceController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductAddController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -228,11 +238,25 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\ProductMaintenance\Add.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\OrderingSearch\" />
-    <Folder Include="Views\OrderingStatusUpdate\" />
-    <Folder Include="Views\OrderingStatus\" />
+    <Folder Include="Views\ItemMaintenance\" />
+    <Folder Include="Views\ProductList\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\CustomerMaster\" />
+    <Folder Include="Views\EmployeeMaster\" />
+    <Folder Include="Views\Estimate\" />
+    <Folder Include="Views\Order\" />
+    <Folder Include="Views\ProductAdd\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\CustomerAdd\" />
+    <Folder Include="Views\CustomerLogin\" />
+    <Folder Include="Views\CustomerLogout\" />
+    <Folder Include="Views\EmployeeLogin\" />
+    <Folder Include="Views\EmployeeLogout\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
