@@ -1,0 +1,22 @@
+﻿body {
+}
+table {
+    width: 1200px;
+    border-collapse: collapse;
+}
+th {
+    border: none;
+    vertical-align:bottom; 
+}
+ul {
+    white-space: nowrap;
+    width:50px;
+}
+.title {
+    
+    font-size: 60px;
+    color: aqua;
+}
+.subtitle{
+    text-align : left;
+}
