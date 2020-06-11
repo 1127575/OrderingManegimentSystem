@@ -1,22 +1,23 @@
 ﻿body {
 }
-table {
-    width: 1200px;
+.kousei {
+    width: 100%;
     border-collapse: collapse;
 }
-th {
+.header {
     border: none;
     vertical-align:bottom; 
 }
+
 ul {
     white-space: nowrap;
     width:50px;
 }
-.title {
+#title {
     
     font-size: 60px;
     color: aqua;
 }
-.subtitle{
+#subtitle{
     text-align : left;
 }
