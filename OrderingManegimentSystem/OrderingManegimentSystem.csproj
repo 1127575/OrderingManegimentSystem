@@ -242,6 +242,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\ProductMaintenance\Add.cshtml" />
+    <Content Include="Views\OrderingSearch\Search.cshtml" />
+    <Content Include="Views\OrderingSearch\Searchresult.cshtml" />
+    <Content Include="Views\OrderingStatus\Ordercancel.cshtml" />
+    <Content Include="Views\OrderingStatus\Orderstatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
@@ -254,8 +258,7 @@
     <Folder Include="Views\EmployeeMaster\" />
     <Folder Include="Views\Estimate\" />
     <Folder Include="Views\ItemMaintenance\" />
-    <Folder Include="Views\OrderingSearch\" />
-    <Folder Include="Views\OrderingStatus\" />
+    <Folder Include="Views\OrderingStatusUpdate\" />
     <Folder Include="Views\Order\" />
     <Folder Include="Views\ProductAdd\" />
     <Folder Include="Views\ProductList\" />
