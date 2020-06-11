@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Ordercancel";
+}
+
+<h2>ご注文のお取り消し確認</h2>
+<p>以下のご注文のキャンセルを承ります。</p>
+<p>内容をご確認の上、よろしければ「キャンセル」ボタンを押してください。</p>
+<p>ご注文番号：@ViewBag.model.OrderNo</p>
+
+<table>
+    <tr>
+        <th>商品番号</th>
+        <th>商品名</th>
+        <th>数量</th>
+        <th>希望納期</th>
+        <th>ステータス</th>
+    </tr>
+    <tr>
+        <td>@ViewBag.model.itemNo</td>
+        <td>@ViewBag.model.itemName</td>
+        <td>@ViewBag.model.quantity</td>
+        <td>@ViewBag.model.DeliveryDate</td>
+        <td>@ViewBag.model.Status</td>
+    </tr>
+</table>
+<button onclick="/OrderingStatus/Orderstatus/@ViewBag.model.OrderNo">この注文をキャンセルする</button>
+
