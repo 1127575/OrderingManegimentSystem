@@ -18,6 +18,7 @@ namespace OrderingManegimentSystem.Controllers
         {
             using (var db = new Database1Entities())
             {
+
                 var dl = from o in db.OrderDetails//外部結合P236
                          join p in db.Products on o.ItemNo equals p.ItemNo
                          into z
@@ -26,11 +27,17 @@ namespace OrderingManegimentSystem.Controllers
                          {
                              orderdetail = o.OrderNo + "-" + o.DetailNo,
                              itemNo = o.ItemNo,
+                             Product = new
+                             {
+                                 itemNo = o.ItemNo,
+                                 itemName = (subd == null ?
+                                                        String.Empty : subd.ItemName)
+                             },
                              quantity = o.Quantity,
                              deliveryDate = o.DeliveryDate,
-                             status = o.Status
+                             status = o.Status,
                          };
-                return Content(string.Join("<br>", dl));
+                return View(dl);
             }
         }
     }
