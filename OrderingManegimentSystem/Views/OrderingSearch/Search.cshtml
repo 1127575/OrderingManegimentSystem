@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Search";
+}
+
+<style>
+    h2 {
+        text-align: center
+    }
+
+    p {
+        text-align: center
+    }
+</style>
+
+<body>
+    <h2>受注情報検索</h2>
+    <p>受注情報を検索します。</p>
+    <p>検索条件を入力して、「検索」ボタンを押してください。</p>
+
+    <form action="OrderingSearch/Searchresult">
+        <table style="margin:0 auto">
+            <tr>
+                <th>顧客ID</th>
+                <td><input type="number" name="customerId" pattern="[0-9]" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
+            </tr>
+            <tr>
+                <th>ご注文番号</th>
+                <td><input type="number" name="orderNo" pattern="[0-9]" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
+            </tr>
+            <tr>
+                <th>希望納期</th>
+                <td>
+                    <input type="date" name="deliveryFrom">～<input type="date" name="deliveryTo">
+                </td>
+            </tr>
+            <tr>
+                <th>受注日時</th>
+                <td>
+                    <input type="date" name="orderFrom">～<input type="date" name="orderTo">
+                </td>
+            </tr>
+            <tr>
+                <th>ステータス</th>
+                <td>
+                    <select name="status">
+                        <option>すべて</option>
+                        <option>未出荷</option>
+                        <option>出荷済</option>
+                        <option>入荷待ち</option>
+                        <option>キャンセル</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="submit" class="btn btn-primary" value="検索"></td>
+            </tr>
+        </table>
+    </form>
+</body>

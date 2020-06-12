@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewBag.Title = "Orderstatus";
+}
+
+<h2>ご注文ステータス確認</h2>
+<p>現在ご注文いただいている商品のステータスは以下のとおりです。</p>
+<p>発送済みの商品のないご注文については、キャンセルが可能です。</p>
+
+@foreach (var L in ViewBag.list)
+{
+    <p>
+        ご注文番号：@ViewBag.Model.OrderNo
+        @if (ViewBag.Model == "未発送")
+        {
+            <button onclick="/OrderingStatus/Ordercancel/@ViewBag.model.OrderNo">この注文をキャンセルする</button>
+        }
+    </p>
+    <table>
+        <tr>
+            <th>商品番号</th>
+            <th>商品名</th>
+            <th>数量</th>
+            <th>希望納期</th>
+            <th>ステータス</th>
+        </tr>
+        <tr>
+            <td>@ViewBag.model.ItemNo</td>
+            <td>@ViewBag.model.ItemName</td>
+            <td>@ViewBag.model.Quantity</td>
+            <td>@ViewBag.model.DeliveryDate</td>
+            <td>@ViewBag.model.Status</td>
+        </tr>
+    </table>
+}
