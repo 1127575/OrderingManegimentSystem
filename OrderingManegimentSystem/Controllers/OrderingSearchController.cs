@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using OrderingManegimentSystem.Models;
 
 
@@ -14,47 +15,59 @@ namespace OrderingManegimentSystem.Controllers
         {
             return View();
         }
-        public ActionResult Searchresult(string customerId, string orderNo, string detailNo, DateTime? deliveryfrom, DateTime? deliveryTo, DateTime? orderFrom, DateTime? orderTo, string status)
+        //public ActionResult Searchresult(int? customerId, int? orderNo, DateTime? deliveryFrom, DateTime? deliveryTo, DateTime? orderFrom, DateTime? orderTo, string status)
+        public ActionResult Searchresult(string customerId, string orderNo, string deliveryFrom, string deliveryTo, string orderFrom, string orderTo, string status)
         {
             using (var db = new Database1Entities())
             {
-                var dl = from a in db.OrderDetails
-                         select a;
-                //［顧客ID］欄が空でない場合、その値で部分一致検索
-                if (!string.IsNullOrEmpty(customerId))
+                //if (customerId != 0)//検索条件の表示
+                if (customerId != null)//検索条件の表示
                 {
-                    dl = db.OrderDetails.Where(a => a.Contains(customerId));
+                    ViewBag.name1 = "顧客ID";
+                    ViewBag.customerId = customerId;
                 }
-
-                //［公開済］チェックが付いている場合、公開済みの記事だけを絞り込み
-                if (released.HasValue && released.Value)
+                //if(orderNo != 0)
+                if (orderNo != null)
                 {
-                    articles = articles.Where(a => a.Released);
+                    ViewBag.name2 = "注文番号";
+                    ViewBag.orderNo = orderNo;
                 }
-                /*var dl = from e in db.OrderDetails
-                                          where e.CustomerId == customerId
-                                          & e.OrderNo == orderNo
-                                          //& deliveryfrom >= e.DeliveryDate >= deliveryTo
-                                          //& orderFrom >= e.OrderDate >= orderTo
-                                          & e.Status == status
-                                          select e;
+                if ((deliveryFrom != null) || (deliveryTo != null))
+                {
+                    ViewBag.name3 = "希望納期";
+                    ViewBag.deliveryPeriod = deliveryFrom + "～" + deliveryTo;
+                }
+                if ((orderFrom != null) || (orderTo != null))
+                {
+                    ViewBag.name4 = "受注日時";
+                    ViewBag.orderPeriod = orderFrom + "～" + orderTo;
+                }
+                ViewBag.status = status;
 
-                    ViewBag.result = from o in db.OrderDetails//内部結合P231
-                                            join p in db.Products on o.ItemNo equals p.ItemNo
-                                            select new
-                                            {
-                                                orderdetail = o.OrderNo + "-" + o.DetailNo,
-                                                itemNo = o.ItemNo,
-                                                Product = new
-                                                {
-                                                    itemName = p.ItemName
-                                                },
-                                                quantity = o.Quantity,
-                                                deliveryDate = o.DeliveryDate,
-                                                status = o.Status,
-                                            };*/
-                return View(dl);
+                /* var dl = from e in db.OrderDetails
+                          where e.CustomerId == customerId
+                          & e.OrderNo == orderNo
+                          //& deliveryfrom >= e.DeliveryDate >= deliveryTo
+                          //& orderFrom >= e.OrderDate >= orderTo
+                          & e.Status == status
+                          select e;*/
+
+                var resultlist = from o in db.OrderDetails//内部結合P231
+                                 join p in db.Products on o.ItemNo equals p.ItemNo
+                                 select new
+                                 {
+                                     orderdetail = o.OrderNo + "-" + o.DetailNo,
+                                     itemNo = o.ItemNo,
+                                     Product = new
+                                     {
+                                         itemName = p.ItemName
+                                     },
+                                     quantity = o.Quantity,
+                                     deliveryDate = o.DeliveryDate,
+                                     status = o.Status,
+                                 };
             }
+            return View();
         }
     }
 }

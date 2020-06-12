@@ -10,16 +10,35 @@
     p {
         text-align: center
     }
+    table {
+        margin: 0 auto
+    }
 </style>
 
-<h2 style="text-align:center">受注情報検索</h2>
+<h2>受注情報検索</h2>
 <p>以下の条件で検索を行いました。</p>
 <p>受注ステータスを更新する場合は、検索結果から</p>
 <p>「ご注文番号-明細」リンクをクリックしてください。</p>
 
 <table>
     <tr>
-        <th>顧客ID</th>
-        <td>@ViewBag.result.orderdetail</td>
+        <th>@ViewBag.name1</th>
+        <td>@ViewBag.customerId</td>
+    </tr>
+    <tr>
+        <th>@ViewBag.name2</th>
+        <td>@ViewBag.orderNo</td>
+    </tr>
+    <tr>
+        <th>@ViewBag.name3</th>
+        <td>@ViewBag.deliveryPeriod</td>
+    </tr>
+    <tr>
+        <th>@ViewBag.name4</th>
+        <td>@ViewBag.orderPeriod</td>
+    </tr>
+    <tr>
+        <th>ステータス</th>
+        <td>@ViewBag.status</td>
     </tr>
 </table>

@@ -11,6 +11,10 @@
     p {
         text-align: center
     }
+
+    table{
+        margin: 0 auto
+    }
 </style>
 
 <body>
@@ -19,7 +23,7 @@
     <p>検索条件を入力して、「検索」ボタンを押してください。</p>
 
     <form action="OrderingSearch/Searchresult">
-        <table style="margin:0 auto">
+        <table>
             <tr>
                 <th>顧客ID</th>
                 <td><input type="number" name="customerId" pattern="[0-9]" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
