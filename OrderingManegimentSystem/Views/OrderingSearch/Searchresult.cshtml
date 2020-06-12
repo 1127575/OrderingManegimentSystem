@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Searchresult";
 }
 
@@ -14,5 +13,13 @@
 </style>
 
 <h2 style="text-align:center">受注情報検索</h2>
-<p>@ViewBag.id</p>
-<p>@ViewBag.deliveryFrom～@ViewBag.deliveryTo</p>
+<p>以下の条件で検索を行いました。</p>
+<p>受注ステータスを更新する場合は、検索結果から</p>
+<p>「ご注文番号-明細」リンクをクリックしてください。</p>
+
+<table>
+    <tr>
+        <th>顧客ID</th>
+        <td>@ViewBag.result.orderdetail</td>
+    </tr>
+</table>
