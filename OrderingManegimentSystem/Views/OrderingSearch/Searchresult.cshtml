@@ -25,19 +25,19 @@
 <table>
     <!--検索条件の表示-->
     <tr>
-        <th>@ViewBag.name1</th>
+        <th>@Html.DisplayNameFor(model => model.CustomerId) </th>
         <td>@ViewBag.customerId</td>
     </tr>
     <tr>
-        <th>@ViewBag.name2</th>
+        <th>@Html.DisplayNameFor(model => model.OrderNo)</th>
         <td>@ViewBag.orderNo</td>
     </tr>
     <tr>
-        <th>@ViewBag.name3</th>
+        <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
         <td>@ViewBag.deliveryPeriod</td>
     </tr>
     <tr>
-        <th>@ViewBag.name4</th>
+        <th>@Html.DisplayNameFor(model => model.OrderDate)</th>
         <td>@ViewBag.orderPeriod</td>
     </tr>
     <tr>

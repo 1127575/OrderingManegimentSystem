@@ -26,11 +26,11 @@
         <table>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.CustomerId)</th>
-                <td><input type="number" name="customerId" pattern="[0-9]" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
+                <td><input type="number" name="customerId" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
             </tr>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.OrderNo) </th>
-                <td><input type="number" name="orderNo" pattern="[0-9]" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
+                <td><input type="number" name="orderNo" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
             </tr>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
@@ -48,7 +48,6 @@
                 <th>@Html.DisplayNameFor(model => model.Status)</th>
                 <td>
                     <select name="status">
-                        <option>すべて</option>
                         <option>未出荷</option>
                         <option>出荷済</option>
                         <option>入荷待ち</option>
