@@ -42,18 +42,15 @@ namespace OrderingManegimentSystem.Controllers
                     ViewBag.name4 = "受注日時";
                     ViewBag.orderPeriod = orderFrom + "～" + orderTo;
                 }
+
                 ViewBag.status = status;
 
-                 /*var dl = from e in db.OrderDetails//Searchで受け取った値で検索
-                          where e.CustomerId == customerId
-                          //& e.OrderNo == orderNo
-                          //& deliveryfrom >= e.DeliveryDate >= deliveryTo
-                          //& orderFrom >= e.OrderDate >= orderTo
-                          //& e.Status == status
-                          select e;*/
-
-                var result = from o in db.OrderDetails //OrderDetail内でCuustomerIdが入力されたものと一致するものを探し、ItemNoをもとにProductと結合させる。
-                             where o.CustomerId == customerId//内部結合P231
+                //検索＆内部結合
+                //OrderDetail内でCustomerIdが入力と一致するものを探し、ItemNoをもとにProductと結合させる。
+                var result = from o in db.OrderDetails 
+                             where o.CustomerId == customerId//部分一致に変える。期間系入れる。
+                             & o.OrderNo == orderNo
+                             & o.Status == status
                              join p in db.Products on o.ItemNo equals p.ItemNo
                                  select new
                                  {
@@ -67,8 +64,10 @@ namespace OrderingManegimentSystem.Controllers
                                      deliveryDate = o.DeliveryDate,
                                      status = o.Status,
                                  };
+                ViewBag.result = result;
+                return View();
+                //return Content(string.Join("<br>", result));
             }
-            return View();
         }
     }
 }

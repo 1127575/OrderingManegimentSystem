@@ -1,4 +1,5 @@
-﻿@{
+﻿@model OrderingManegimentSystem.ViewModel.OrderingSearchResult
+@{
     ViewBag.Title = "Searchresult";
 }
 
@@ -10,6 +11,7 @@
     p {
         text-align: center
     }
+
     table {
         margin: 0 auto
     }
@@ -21,6 +23,7 @@
 <p>「ご注文番号-明細」リンクをクリックしてください。</p>
 
 <table>
+    <!--検索条件の表示-->
     <tr>
         <th>@ViewBag.name1</th>
         <td>@ViewBag.customerId</td>
@@ -38,7 +41,32 @@
         <td>@ViewBag.orderPeriod</td>
     </tr>
     <tr>
-        <th>ステータス</th>
+        <th>@Html.DisplayNameFor(model => model.Status)</th>
         <td>@ViewBag.status</td>
     </tr>
+</table>
+<hr />
+
+<table><tr><th>検索結果</th></tr></table>
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.OrderDetail)</th>
+        <th>@Html.DisplayNameFor(model => model.ItemNo)</th>
+        <th>@Html.DisplayNameFor(model => model.ItemName)</th>
+        <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+        <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
+        <th>@Html.DisplayNameFor(model => model.Status)</th>
+    </tr>
+
+    @foreach (var OrderingSearchResult in ViewBag)
+    {
+        <tr>
+            <td>@OrderingSearchResult.OrderDetail</td>
+            <td>@OrderingSearchResult.ItemNo</td>
+            <td>@OrderingSearchResult.ItemName</td>
+            <td>@OrderingSearchResult.Quantity</td>
+            <td>@OrderingSearchResult.DeliveryDate</td>
+            <td>@OrderingSearchResult.Status</td>
+        </tr>
+    }
 </table>
