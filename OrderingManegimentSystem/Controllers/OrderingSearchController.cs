@@ -15,8 +15,8 @@ namespace OrderingManegimentSystem.Controllers
         {
             return View();
         }
-        //public ActionResult Searchresult(int? customerId, int? orderNo, DateTime? deliveryFrom, DateTime? deliveryTo, DateTime? orderFrom, DateTime? orderTo, string status)
-        public ActionResult Searchresult(string customerId, string orderNo, string deliveryFrom, string deliveryTo, string orderFrom, string orderTo, string status)
+        public ActionResult Searchresult(int? customerId, int? orderNo, DateTime? deliveryFrom, DateTime? deliveryTo, DateTime? orderFrom, DateTime? orderTo, string status)
+        //public ActionResult Searchresult(string customerId, string orderNo, string deliveryFrom, string deliveryTo, string orderFrom, string orderTo, string status)
         {
             using (var db = new Database1Entities())
             {
@@ -44,16 +44,17 @@ namespace OrderingManegimentSystem.Controllers
                 }
                 ViewBag.status = status;
 
-                /* var dl = from e in db.OrderDetails
+                 /*var dl = from e in db.OrderDetails//Searchで受け取った値で検索
                           where e.CustomerId == customerId
-                          & e.OrderNo == orderNo
+                          //& e.OrderNo == orderNo
                           //& deliveryfrom >= e.DeliveryDate >= deliveryTo
                           //& orderFrom >= e.OrderDate >= orderTo
-                          & e.Status == status
+                          //& e.Status == status
                           select e;*/
 
-                var resultlist = from o in db.OrderDetails//内部結合P231
-                                 join p in db.Products on o.ItemNo equals p.ItemNo
+                var result = from o in db.OrderDetails //OrderDetail内でCuustomerIdが入力されたものと一致するものを探し、ItemNoをもとにProductと結合させる。
+                             where o.CustomerId == customerId//内部結合P231
+                             join p in db.Products on o.ItemNo equals p.ItemNo
                                  select new
                                  {
                                      orderdetail = o.OrderNo + "-" + o.DetailNo,
