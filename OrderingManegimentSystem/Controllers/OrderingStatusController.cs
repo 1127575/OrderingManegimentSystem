@@ -42,9 +42,41 @@ namespace OrderingManegimentSystem.Controllers
             }
         }
 
-        public ActionResult Ordercancel(int OrderNo)
+        public ActionResult OrderCancelConfirm(int odNo)
         {
-            return View();
+            using (var db = new Database1Entities())
+            {
+                var osvmList = new List<OrderStatusViewModel>();
+
+                var orderDetailList = (from e in db.OrderDetails
+                                       where e.OrderNo == odNo
+                                       select e).ToList();
+                for (int i = 0; i < orderDetailList.Count(); i++)
+                {
+                    var osvm = new OrderStatusViewModel(orderDetailList[i]);
+                    osvmList.Add(osvm);
+                }
+                return View(osvmList);
+            }
         }
+
+        public ActionResult OrderCancel(int odNo)
+        {
+            using (var db = new Database1Entities())
+            {
+                var orderDetailList = (from e in db.OrderDetails
+                                       where e.OrderNo == odNo
+                                       select e).ToList();
+                for (int i = 0; i < orderDetailList.Count(); i++)
+                {
+                    int odi = orderDetailList[i].DetailNo;
+                    OrderDetail od = db.OrderDetails.Find(odi);
+                    od.Status = "キャンセル";
+                }
+                db.SaveChanges();
+                return Redirect("OrderList");
+            }
+        }
+
     }
 }

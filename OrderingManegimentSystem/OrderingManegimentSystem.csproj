@@ -261,6 +261,7 @@
     <Content Include="Views\OrderingStatus\Ordercancel.cshtml" />
     <Content Include="Views\OrderingStatus\Orderstatus.cshtml" />
     <Content Include="Views\OrderingStatus\OrderList.cshtml" />
+    <Content Include="Views\OrderingStatus\OrderCancelConfirm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
