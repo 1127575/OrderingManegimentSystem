@@ -4,23 +4,44 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using OrderingManegimentSystem.Models;
+using OrderingManegimentSystem.ViewModel;
 
 
 namespace OrderingManegimentSystem.Controllers
 {
     public class OrderingStatusController : Controller
     {
-        Database1Entities db = new Database1Entities();
         // GET: OrderingStatus
-        public ActionResult Orderstatus(int CustomerId = 1)
+        public ActionResult OrderList(int ctmId = 1)
         {
             using (var db = new Database1Entities())
             {
-                var ol = from e in db.OrderDetails where e.CustomerId == CustomerId select e;
-                //return Content(string.Join("<br>", ol));
-                return View(ol);
+                var osList = new List<List<OrderStatusViewModel>>();
+
+                var orderNoList = (from odn in db.Orders
+                                   where odn.CustomerId == ctmId
+                                   select new { odn.OrderNo }).ToList();
+
+                for (int i = 0; i < orderNoList.Count(); i++)
+                {
+                    int odn = orderNoList[i].OrderNo;
+                    var orderDetailList = (from e in db.OrderDetails
+                                           where e.OrderNo == odn
+                                           select e).ToList();
+
+                    var osvmList = new List<OrderStatusViewModel>();
+                    for (int j = 0; j < orderDetailList.Count(); j++)
+                    {
+                        var osvm = new OrderStatusViewModel(orderDetailList[j]);
+                        osvmList.Add(osvm);
+                    }
+                    osList.Add(osvmList);
+                }
+
+                return View(osList);
             }
         }
+
         public ActionResult Ordercancel(int OrderNo)
         {
             return View();
