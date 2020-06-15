@@ -16,7 +16,7 @@ namespace OrderingManegimentSystem.Controllers
             return View();
         }
         //public ActionResult Searchresult(int? customerId, int? orderNo, DateTime? deliveryFrom, DateTime? deliveryTo, DateTime? orderFrom, DateTime? orderTo, string status)
-        public ActionResult Searchresult(string customerId, string orderNo, string deliveryFrom, DateTime? deliveryTo, string orderFrom, string orderTo, string status)
+        public ActionResult Searchresult(string customerId, string orderNo, DateTime? deliveryFrom, DateTime? deliveryTo, DateTime? orderFrom, DateTime? orderTo, string status)
         {
             using (var db = new Database1Entities())
             {
@@ -31,7 +31,10 @@ namespace OrderingManegimentSystem.Controllers
                 var result = db.OrderDetails.Where(
                     o => o.CustomerId.ToString().Contains(customerId)
                     & o.OrderNo.ToString().Contains(orderNo)//期間系入れる。
-                   //& o.DeliveryDate BETWEEN(deliveryFrom) AND(deliveryTo)
+                    & deliveryFrom <= o.DeliveryDate
+                    & o.DeliveryDate <= deliveryTo
+                    & orderFrom <= o.OrderDate
+                    &o.OrderDate <= orderTo
                     & o.Status == status
                     ).Join(
                     db.Products,
@@ -51,7 +54,6 @@ namespace OrderingManegimentSystem.Controllers
                         status = o.Status,
                     }
                     );
-
                 ViewBag.result = result;
                 //return View();
                 return Content(string.Join("<br>", result));
