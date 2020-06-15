@@ -186,6 +186,7 @@
     <Compile Include="ViewModel\CustomerInputViewModel.cs" />
     <Compile Include="ViewModel\EmployeeInputViewModel.cs" />
     <Compile Include="ViewModel\EmployeeListViewModel.cs" />
+    <Compile Include="ViewModel\OrderStatusViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Database1.mdf" />
@@ -259,6 +260,7 @@
     <Content Include="Views\OrderingSearch\Searchresult.cshtml" />
     <Content Include="Views\OrderingStatus\Ordercancel.cshtml" />
     <Content Include="Views\OrderingStatus\Orderstatus.cshtml" />
+    <Content Include="Views\OrderingStatus\OrderList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
