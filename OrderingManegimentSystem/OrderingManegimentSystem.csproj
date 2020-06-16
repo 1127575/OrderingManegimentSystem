@@ -262,6 +262,8 @@
     <Content Include="Views\OrderingStatus\Orderstatus.cshtml" />
     <Content Include="Views\OrderingStatus\OrderList.cshtml" />
     <Content Include="Views\OrderingStatus\OrderCancelConfirm.cshtml" />
+    <Content Include="Views\Shared\Front_Layout.cshtml" />
+    <Content Include="Views\Shared\Back_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
