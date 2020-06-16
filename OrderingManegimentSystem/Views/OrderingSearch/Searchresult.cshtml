@@ -1,4 +1,4 @@
-﻿@model OrderingManegimentSystem.ViewModel.OrderingSearchResult
+﻿@model List<OrderingManegimentSystem.ViewModel.OrderingSearchResult>
 @{
     ViewBag.Title = "Searchresult";
 }
@@ -25,48 +25,44 @@
 <table>
     <!--検索条件の表示-->
     <tr>
-        <th>@Html.DisplayNameFor(model => model.CustomerId) </th>
-        <td>@ViewBag.customerId</td>
+        <th>顧客Id </th><td>@ViewBag.customerId</td>
     </tr>
     <tr>
-        <th>@Html.DisplayNameFor(model => model.OrderNo)</th>
-        <td>@ViewBag.orderNo</td>
+        <th>注文番号</th><td>@ViewBag.orderNo</td>
     </tr>
     <tr>
-        <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
-        <td>@ViewBag.deliveryPeriod</td>
+        <th>希望納期</th><td>@ViewBag.deliveryPeriod</td>
     </tr>
     <tr>
-        <th>@Html.DisplayNameFor(model => model.OrderDate)</th>
-        <td>@ViewBag.orderPeriod</td>
+        <th>受注日時</th><td>@ViewBag.orderPeriod</td>
     </tr>
     <tr>
-        <th>@Html.DisplayNameFor(model => model.Status)</th>
-        <td>@ViewBag.status</td>
+        <th>ステータス</th><td>@ViewBag.status</td>
     </tr>
 </table>
 <hr />
 
 <table><tr><th>検索結果</th></tr></table>
-<table>
-    <tr>
-        <th>@Html.DisplayNameFor(model => model.OrderDetail)</th>
-        <th>@Html.DisplayNameFor(model => model.ItemNo)</th>
-        <th>@Html.DisplayNameFor(model => model.ItemName)</th>
-        <th>@Html.DisplayNameFor(model => model.Quantity)</th>
-        <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
-        <th>@Html.DisplayNameFor(model => model.Status)</th>
-    </tr>
-
-    @foreach (var OrderingSearchResult in ViewBag)
-    {
+@if (ViewBag.element == 0)
+{
+    <p>入力された条件に適合する受注情報は存在しません。</p>
+}
+else if(ViewBag.element == 1)
+{
+    <table border="1">
         <tr>
-            <td>@OrderingSearchResult.OrderDetail</td>
-            <td>@OrderingSearchResult.ItemNo</td>
-            <td>@OrderingSearchResult.ItemName</td>
-            <td>@OrderingSearchResult.Quantity</td>
-            <td>@OrderingSearchResult.DeliveryDate</td>
-            <td>@OrderingSearchResult.Status</td>
+            <th>注文番号-明細</th><th>商品番号</th><th>商品名</th><th>数量</th><th>希望納期</th><th>ステータス</th>
         </tr>
-    }
-</table>
+        @for(int i = 0; i < Model.Count(); i++)
+        {
+    <tr>
+        <td>@Html.DisplayFor(model => model[i].OrderDetail)</td>
+        <td>@Html.DisplayFor(model => model[i].ItemNo)</td>
+        <td>@Html.DisplayFor(model => model[i].ItemName)</td>
+        <td>@Html.DisplayFor(model => model[i].Quantity)</td>
+        <td>@Html.DisplayFor(model => model[i].DeliveryDate)</td>
+        <td>@Html.DisplayFor(model => model[i].Status)</td>
+    </tr>
+        }
+    </table>
+}
