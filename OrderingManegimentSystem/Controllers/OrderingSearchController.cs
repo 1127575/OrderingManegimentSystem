@@ -17,7 +17,6 @@ namespace OrderingManegimentSystem.Controllers
             return View();
         }
         public ActionResult Searchresult(int? customerId, int? orderNo, DateTime? deliveryFrom, DateTime? deliveryTo, DateTime? orderFrom, DateTime? orderTo, string status)
-        //public ActionResult Searchresult(int customerId, int orderNo, DateTime? deliveryFrom, DateTime? deliveryTo, DateTime? orderFrom, DateTime? orderTo, string status)
         {
             using (var db = new Database1Entities())
             {
@@ -33,49 +32,49 @@ namespace OrderingManegimentSystem.Controllers
 
                 var customerIdList = (from e in db.OrderDetails
                                       select new { e.DetailNo }).ToList(); ;
-                if (customerId != 0)
+                if (customerId != null)
                 {
                     customerIdList = (from e in db.OrderDetails
-                                          where e.CustomerId.ToString().Contains(customerId.ToString())
-                                          select new { e.DetailNo }).ToList();
+                                      where e.CustomerId.ToString().Contains(customerId.ToString())
+                                      select new { e.DetailNo }).ToList();
                 }
 
                 var orderNoList = (from e in db.OrderDetails
                                    select new { e.DetailNo }).ToList();
-                if (orderNo != 0)
+                if (orderNo != null)
                 {
                     orderNoList = (from e in db.OrderDetails
-                                       where e.OrderNo.ToString().Contains(orderNo.ToString())
-                                       select new { e.DetailNo }).ToList();
+                                   where e.OrderNo.ToString().Contains(orderNo.ToString())
+                                   select new { e.DetailNo }).ToList();
                 }
 
                 var deliveryDateList = (from e in db.OrderDetails
                                         select new { e.DetailNo }).ToList();
                 if (deliveryFrom != null && deliveryTo != null)
-                  {
+                {
                     deliveryDateList = (from e in db.OrderDetails
-                                            where deliveryFrom <= e.DeliveryDate
-                                            & e.DeliveryDate <= deliveryTo
-                                            select new { e.DetailNo }).ToList();
-                  }
+                                        where deliveryFrom <= e.DeliveryDate
+                                        & e.DeliveryDate <= deliveryTo
+                                        select new { e.DetailNo }).ToList();
+                }
 
                 var orderDateList = (from e in db.OrderDetails
                                      select new { e.DetailNo }).ToList();
                 if (orderFrom != null && orderTo != null)
                 {
                     orderDateList = (from e in db.OrderDetails
-                                         where orderFrom <= e.OrderDate
-                                         & e.OrderDate <= orderTo
-                                         select new { e.DetailNo }).ToList();
+                                     where orderFrom <= e.OrderDate
+                                     & e.OrderDate <= orderTo
+                                     select new { e.DetailNo }).ToList();
                 }
 
                 var statusList = (from e in db.OrderDetails
-                                    where e.Status == status
-                                    select new { e.DetailNo }).ToList();
-                if (statusList == null)//該当DetailNoゼロ
+                                  where e.Status == status
+                                  select new { e.DetailNo }).ToList();
+                if (statusList.Count == 0)//該当DetailNoゼロ
                 {
                     ViewBag.element = 0;
-                }//←ここまでできてる
+                }
                 else
                 {
                     List<int> resultList = new List<int>();
@@ -89,18 +88,20 @@ namespace OrderingManegimentSystem.Controllers
                                 {
                                     for (int m = 0; m < orderDateList.Count(); m++)
                                     {
-                                        if (statusList[i] == customerIdList[j] && statusList[i] == orderNoList[k] && statusList[i] == deliveryDateList[l] && statusList[i] == orderDateList[m] )
+                                        if (statusList[i].DetailNo == customerIdList[j].DetailNo
+                                        && statusList[i].DetailNo == orderNoList[k].DetailNo
+                                        && statusList[i].DetailNo == deliveryDateList[l].DetailNo
+                                        && statusList[i].DetailNo == orderDateList[m].DetailNo)
                                         {
                                             //各検索項目に該当するDetailNoのリストの中から、全てのリストに含まれるDetailNoを抽出ししてstring型でresultListに追加する。
-                                            resultList.Add(int.Parse(statusList[i].ToString()));//！！！追加できてない！！！
-                                            //resultList.Add(statusList[i]);
+                                            resultList.Add(statusList[i].DetailNo);
                                         }
                                     }
                                 }
                             }
                         }
                     }
-                    if(resultList == null)//該当DetailNoゼロ
+                    if (resultList.Count() == 0)//該当DetailNoゼロ
                     {
                         ViewBag.element = 0;
                     }
@@ -109,11 +110,12 @@ namespace OrderingManegimentSystem.Controllers
                         for (int i = 0; i < resultList.Count(); i++)
                         {
                             //抽出したDetailNoに該当する列のデータをSearchResultListにリストとして格納。
+                            int resultDetailNo = resultList[i];
                             var SearchResultList = (from e in db.OrderDetails
-                                                    where e.DetailNo == resultList[i]
+                                                    where e.DetailNo == resultDetailNo
                                                     select e).ToList();
 
-                            for(int j = 0; j < SearchResultList.Count(); j++)
+                            for (int j = 0; j < SearchResultList.Count(); j++)
                             {
                                 //SearchResultListの中身をモデルに格納。
                                 var osrViewModel = new OrderingSearchResult(SearchResultList[j]);
@@ -123,7 +125,7 @@ namespace OrderingManegimentSystem.Controllers
                     }
                 }
                 return View(OrderingSearchResultViewModelList);
-            }                            
+            }
         }
     }
 }
