@@ -72,10 +72,10 @@ namespace OrderingManegimentSystem.Controllers
                 var statusList = (from e in db.OrderDetails
                                     where e.Status == status
                                     select new { e.DetailNo }).ToList();
-                if(statusList == null)//該当DetailNoゼロ
+                if (statusList == null)//該当DetailNoゼロ
                 {
                     ViewBag.element = 0;
-                }
+                }//←ここまでできてる
                 else
                 {
                     List<int> resultList = new List<int>();
@@ -85,14 +85,15 @@ namespace OrderingManegimentSystem.Controllers
                         {
                             for (int k = 0; k < orderNoList.Count(); k++)
                             {
-                                for (int l = 0; l < deliveryDateList.Count; l++)
+                                for (int l = 0; l < deliveryDateList.Count(); l++)
                                 {
-                                    for (int m = 0; m < orderDateList.Count; m++)
+                                    for (int m = 0; m < orderDateList.Count(); m++)
                                     {
                                         if (statusList[i] == customerIdList[j] && statusList[i] == orderNoList[k] && statusList[i] == deliveryDateList[l] && statusList[i] == orderDateList[m] )
                                         {
-                                            //各検索項目に該当するDetailNoのリストの中から、全てのリストに含まれるDetailNoを抽出ししてresultListに追加する。
-                                            resultList.Add(int.Parse(statusList[i].ToString()));//型変換自信ない！
+                                            //各検索項目に該当するDetailNoのリストの中から、全てのリストに含まれるDetailNoを抽出ししてstring型でresultListに追加する。
+                                            resultList.Add(int.Parse(statusList[i].ToString()));//！！！追加できてない！！！
+                                            //resultList.Add(statusList[i]);
                                         }
                                     }
                                 }
@@ -100,7 +101,6 @@ namespace OrderingManegimentSystem.Controllers
                         }
                     }
                     if(resultList == null)//該当DetailNoゼロ
-
                     {
                         ViewBag.element = 0;
                     }
@@ -122,35 +122,6 @@ namespace OrderingManegimentSystem.Controllers
                         }
                     }
                 }
-                /*
-                var result = (db.OrderDetails.Where(
-                o => o.CustomerId.ToString().Contains(customerId.ToString())
-                & o.OrderNo.ToString().Contains(orderNo.ToString())
-                & deliveryFrom <= o.DeliveryDate
-                & o.DeliveryDate <= deliveryTo
-                & orderFrom <= o.OrderDate
-                & o.OrderDate <= orderTo
-                & o.Status == status
-                ).Join(
-                db.Products,
-                o => o.Product.ItemNo,
-                p => p.ItemNo,
-                (o, p) =>
-                new
-                {
-                    orderdetail = o.OrderNo + "-" + o.DetailNo,
-                    itemNo = o.ItemNo,
-                    Product = new
-                    {
-                        itemName = p.ItemName
-                    },
-                    quantity = o.Quantity,
-                    deliveryDate = o.DeliveryDate,
-                    status = o.Status,
-                }
-                )).ToList();
-                */
-
                 return View(OrderingSearchResultViewModelList);
             }                            
         }
