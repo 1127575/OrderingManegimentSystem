@@ -8,8 +8,12 @@ namespace OrderingManegimentSystem.Controllers
 {
     public class StatusUpdateController : Controller
     {
-        // GET: StatusUpdate
-        public ActionResult Index()
+        public ActionResult OrderStatusUpdate()
+        {
+            return View();
+        }
+        
+        public ActionResult OrderStatusChange()
         {
             return View();
         }

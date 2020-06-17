@@ -21,27 +21,31 @@
     <h2>受注情報検索</h2>
     <p>受注情報を検索します。</p>
     <p>検索条件を入力して、「検索」ボタンを押してください。</p>
+    @if (ViewBag.element == 0)
+    {
+        <p>入力された条件に適合する受注情報は存在しません。</p>
+    }
 
     <form action="OrderingSearch/Searchresult">
         <table>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.CustomerId)</th>
-                <td><input type="number" name="customerId" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
+                <td><input type="number" name="customerId" style="width:184px" placeholder="@ViewBag.customerId"></td><!--文字列の最大長はバリデーションで指定可能-->
             </tr>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.OrderNo) </th>
-                <td><input type="number" name="orderNo" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
+                <td><input type="number" name="orderNo" style="width:184px" placeholder="@ViewBag.orderNo"></td><!--文字列の最大長はバリデーションで指定可能-->
             </tr>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
                 <td>
-                    <input type="date" name="deliveryFrom">～<input type="date" name="deliveryTo">
+                    <input type="date" name="deliveryFrom" placeholder="@ViewBag.deliveryFrom">～<input type="date" name="deliveryTo" placeholder="deliveryTo">
                 </td>
             </tr>
             <tr>
                 <th>@Html.DisplayNameFor(model => model.OrderDate)</th>
                 <td>
-                    <input type="date" name="orderFrom">～<input type="date" name="orderTo">
+                    <input type="date" name="orderFrom" placeholder="orderFrom">～<input type="date" name="orderTo" placeholder="orderTo">
                 </td>
             </tr>
             <tr>

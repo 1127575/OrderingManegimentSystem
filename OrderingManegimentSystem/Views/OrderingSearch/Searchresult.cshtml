@@ -43,12 +43,6 @@
 <hr />
 
 <table><tr><th>検索結果</th></tr></table>
-@if (ViewBag.element == 0)
-{
-    <p>入力された条件に適合する受注情報は存在しません。</p>
-}
-else if(ViewBag.element == 1)
-{
     <table border="1">
         <tr>
             <th>注文番号-明細</th><th>商品番号</th><th>商品名</th><th>数量</th><th>希望納期</th><th>ステータス</th>
@@ -56,7 +50,7 @@ else if(ViewBag.element == 1)
         @for(int i = 0; i < Model.Count(); i++)
         {
     <tr>
-        <td>@Html.DisplayFor(model => model[i].OrderDetail)</td>
+        <td><a href="~/StatusUpdate/OrderStatusUpdate">@Html.DisplayFor(model => model[i].OrderDetail)</a></td>
         <td>@Html.DisplayFor(model => model[i].ItemNo)</td>
         <td>@Html.DisplayFor(model => model[i].ItemName)</td>
         <td>@Html.DisplayFor(model => model[i].Quantity)</td>
@@ -65,4 +59,3 @@ else if(ViewBag.element == 1)
     </tr>
         }
     </table>
-}

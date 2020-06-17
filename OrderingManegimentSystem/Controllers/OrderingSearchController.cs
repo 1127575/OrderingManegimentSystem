@@ -25,7 +25,6 @@ namespace OrderingManegimentSystem.Controllers
                 ViewBag.deliveryPeriod = deliveryFrom + "～" + deliveryTo;
                 ViewBag.orderPeriod = orderFrom + "～" + orderTo;
                 ViewBag.status = status;
-                ViewBag.element = 1;
                 //モデルのインスタンスを生成。
                 var OrderingSearchResultViewModelList = new List<OrderingSearchResultViewModel>();
 
@@ -74,6 +73,7 @@ namespace OrderingManegimentSystem.Controllers
                 if (statusList.Count == 0)//該当DetailNoゼロ
                 {
                     ViewBag.element = 0;
+                    return View("Search");
                 }
                 else
                 {
@@ -104,6 +104,7 @@ namespace OrderingManegimentSystem.Controllers
                     if (resultList.Count() == 0)//該当DetailNoゼロ
                     {
                         ViewBag.element = 0;
+                        return View("Search");
                     }
                     else
                     {
