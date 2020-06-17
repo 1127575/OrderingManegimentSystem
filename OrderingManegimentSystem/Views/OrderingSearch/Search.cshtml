@@ -1,4 +1,4 @@
-﻿
+﻿@model OrderingManegimentSystem.Models.OrderDetail
 @{
     ViewBag.Title = "Search";
 }
@@ -11,6 +11,10 @@
     p {
         text-align: center
     }
+
+    table{
+        margin: 0 auto
+    }
 </style>
 
 <body>
@@ -19,32 +23,31 @@
     <p>検索条件を入力して、「検索」ボタンを押してください。</p>
 
     <form action="OrderingSearch/Searchresult">
-        <table style="margin:0 auto">
+        <table>
             <tr>
-                <th>顧客ID</th>
-                <td><input type="number" name="customerId" pattern="[0-9]" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
+                <th>@Html.DisplayNameFor(model => model.CustomerId)</th>
+                <td><input type="number" name="customerId" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
             </tr>
             <tr>
-                <th>ご注文番号</th>
-                <td><input type="number" name="orderNo" pattern="[0-9]" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
+                <th>@Html.DisplayNameFor(model => model.OrderNo) </th>
+                <td><input type="number" name="orderNo" style="width:184px"></td><!--文字列の最大長はバリデーションで指定可能-->
             </tr>
             <tr>
-                <th>希望納期</th>
+                <th>@Html.DisplayNameFor(model => model.DeliveryDate)</th>
                 <td>
                     <input type="date" name="deliveryFrom">～<input type="date" name="deliveryTo">
                 </td>
             </tr>
             <tr>
-                <th>受注日時</th>
+                <th>@Html.DisplayNameFor(model => model.OrderDate)</th>
                 <td>
                     <input type="date" name="orderFrom">～<input type="date" name="orderTo">
                 </td>
             </tr>
             <tr>
-                <th>ステータス</th>
+                <th>@Html.DisplayNameFor(model => model.Status)</th>
                 <td>
                     <select name="status">
-                        <option>すべて</option>
                         <option>未出荷</option>
                         <option>出荷済</option>
                         <option>入荷待ち</option>
