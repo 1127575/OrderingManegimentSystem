@@ -9,15 +9,15 @@ using Microsoft.Ajax.Utilities;
 
 namespace OrderingManegimentSystem.ViewModel
 {
-    public class OrderingSearchResult:OrderDetail
+    public class OrderingSearchResultViewModel:OrderDetail
     {
         [DisplayName("商品名")]
         public string ItemName { get; set; }
         [DisplayName("注文番号-明細")]
         public string OrderDetail { get; set; }
 
-        public OrderingSearchResult() { }
-        public OrderingSearchResult(OrderDetail osr)
+        public OrderingSearchResultViewModel() { }
+        public OrderingSearchResultViewModel(OrderDetail osr)
         {
             this.OrderDetail = osr.OrderNo + "-" + osr.DetailNo;
             this.ItemNo = osr.ItemNo;

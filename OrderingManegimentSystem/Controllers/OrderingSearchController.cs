@@ -27,7 +27,7 @@ namespace OrderingManegimentSystem.Controllers
                 ViewBag.status = status;
                 ViewBag.element = 1;
                 //モデルのインスタンスを生成。
-                var OrderingSearchResultViewModelList = new List<OrderingSearchResult>();
+                var OrderingSearchResultViewModelList = new List<OrderingSearchResultViewModel>();
 
 
                 var customerIdList = (from e in db.OrderDetails
@@ -118,7 +118,7 @@ namespace OrderingManegimentSystem.Controllers
                             for (int j = 0; j < SearchResultList.Count(); j++)
                             {
                                 //SearchResultListの中身をモデルに格納。
-                                var osrViewModel = new OrderingSearchResult(SearchResultList[j]);
+                                var osrViewModel = new OrderingSearchResultViewModel(SearchResultList[j]);
                                 OrderingSearchResultViewModelList.Add(osrViewModel);
                             }
                         }
