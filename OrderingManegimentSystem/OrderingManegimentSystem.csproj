@@ -265,13 +265,14 @@
     <Content Include="Views\OrderingStatus\OrderCancelConfirm.cshtml" />
     <Content Include="Views\Shared\Front_Layout.cshtml" />
     <Content Include="Views\Shared\Back_Layout.cshtml" />
+    <Content Include="Views\CustomerLogin\CustomerLoginIndex.cshtml" />
+    <Content Include="Views\EmployeeLogin\EmployeeMain.cshtml" />
+    <Content Include="Views\EmployeeLogin\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
     <Folder Include="Views\CustomerAdd\" />
-    <Folder Include="Views\CustomerLogin\" />
     <Folder Include="Views\CustomerLogout\" />
-    <Folder Include="Views\EmployeeLogin\" />
     <Folder Include="Views\EmployeeLogout\" />
     <Folder Include="Views\Estimate\" />
     <Folder Include="Views\ItemMaintenance\" />
